@@ -55,6 +55,15 @@ def train(args):
                                              batch_size=args.batchsize,
                                              num_workers=6)
     
+    print(f'\n{"="*50}')
+    print(f'[Train] Format     : {args.format}')
+    print(f'[Train] Data path  : {data_path}')
+    print(f'[Train] Dataset size: {len(dataset)} samples')
+    print(f'[Train] Batch size : {args.batchsize}')
+    print(f'[Train] Batches/epoch: {len(dataloader)}')
+    print(f'[Train] Output dir : {args.output}')
+    print(f'{"="*50}\n')
+
     # Initialize models
     encoder = enc_func()
     encoder = encoder.cuda().train()
@@ -66,6 +75,13 @@ def train(args):
     optimizer = torch.optim.AdamW(params, lr=1e-3)
     scheduler = get_constant_schedule_with_warmup(optimizer, 2000)
     writer = SummaryWriter(log_dir=args.output)
+
+    enc_params = sum(p.numel() for p in encoder.parameters() if p.requires_grad)
+    dec_params = sum(p.numel() for p in decoder.parameters() if p.requires_grad)
+    print(f'[Model] Encoder params: {enc_params:,}')
+    print(f'[Model] Decoder params: {dec_params:,}')
+    print(f'[Model] Total params  : {enc_params + dec_params:,}')
+    print(f'[Model] Codebook dim  : based on format={args.format}')
     
     # Main training loop
     iters = 0
@@ -111,6 +127,7 @@ def train(args):
             iters += 1
             progress_bar.update(1)
 
+        print(f'\n[Epoch {epoch}] total_loss={total_loss.item():.4f} | param_loss={param_loss.item():.4f} | vq_loss={vq_loss.item():.4f}')
         progress_bar.close()
         writer.flush()
 
@@ -132,6 +149,7 @@ def train(args):
 
         # Save model after n epoch
         if (epoch+1) % 50 == 0:
+            print(f'[Save] Epoch {epoch+1}: saved encoder & decoder to {args.output}')
             torch.save(encoder.state_dict(), os.path.join(args.output,'enc_epoch_'+str(epoch+1)+'.pt'))
             torch.save(decoder.state_dict(), os.path.join(args.output,'dec_epoch_'+str(epoch+1)+'.pt'))
        

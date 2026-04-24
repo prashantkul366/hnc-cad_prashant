@@ -30,6 +30,9 @@ class SolidData(torch.utils.data.Dataset):
                 vec_data['name'] = data['name'].split('/')[-1]
                 self.data.append(vec_data)
 
+        print(f'[SolidData] Loaded from: {path}')
+        print(f'[SolidData] Total raw samples: {len(dataset)}, After filter: {len(self.data)} ({100*len(self.data)/len(dataset):.1f}% kept)')
+        print(f'[SolidData] Max solids allowed: {MAX_SOLID}, Param seq len: {SOLID_PARAM_SEQ}')
         # print(f'Post-Filter: {len(self.data)}, Keep Ratio: {100*len(self.data)/len(dataset):.2f}%')
         
       
@@ -99,7 +102,10 @@ class ProfileData(torch.utils.data.Dataset):
                 vec_data['num'] = num_bbox
                 vec_data['name'] = data['uid']
                 self.data.append(vec_data)
- 
+
+        print(f'[ProfileData] Loaded from: {data_path}')
+        print(f'[ProfileData] Total raw samples: {len(dataset)}, After filter: {len(self.data)} ({100*len(self.data)/len(dataset):.1f}% kept)')
+        print(f'[ProfileData] Max profiles allowed: {MAX_PROFILE}, Param seq len: {PROFILE_PARAM_SEQ}')
         # print(f'Post-Filter: {len(self.data)}, Keep Ratio: {100*len(self.data)/len(dataset):.2f}%')
 
 
@@ -186,6 +192,9 @@ class LoopData(torch.utils.data.Dataset):
             vec_data['name'] = data['uid']
             self.data.append(vec_data)
 
+        print(f'[LoopData] Loaded from: {path}')
+        print(f'[LoopData] Total raw samples: {len(dataset)}, After filter: {len(self.data)} ({100*len(self.data)/len(dataset):.1f}% kept)')
+        print(f'[LoopData] Max loop tokens: {MAX_LOOP}')
         # print(f'Post-Filter: {len(self.data)}, Keep Ratio: {100*len(self.data)/len(dataset):.2f}%')
       
 
