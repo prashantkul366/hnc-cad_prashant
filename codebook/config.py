@@ -7,22 +7,22 @@ REINIT_TRAIN_EPOCH = 200
 TOTAL_TRAIN_EPOCH = 250
 
 # SOLID CONFIG
-SOLID_TRAIN_PATH = 'data/solid/train_deduplicate.pkl'
-SOLID_FULL_PATH = 'data/solid/train.pkl'
+SOLID_TRAIN_PATH = '/content/hnc_data/data/solid/train_deduplicate.pkl'
+SOLID_FULL_PATH = '/content/hnc_data/data/solid/train.pkl'
 SOLID_PARAM_SEQ = 6
 MAX_SOLID = 5 
 SOLID_CODEBOOK_DIM = 10000 # or optionally use 5000
 
 # PROFILE CONFIG
-PROFILE_TRAIN_PATH = 'data/profile/train_deduplicate.pkl'
-PROFILE_FULL_PATH = 'data/profile/train.pkl'
+PROFILE_TRAIN_PATH = '/content/hnc_data/data/profile/train_deduplicate.pkl' 
+PROFILE_FULL_PATH = '/content/hnc_data/data/profile/train.pkl'              
 PROFILE_PARAM_SEQ = 4
 MAX_PROFILE = 20 
 PROFILE_CODEBOOK_DIM = 5000
 
 # LOOP CONFIG
-LOOP_TRAIN_PATH = 'data/loop/train_deduplicate.pkl'
-LOOP_FULL_PATH = 'data/loop/train.pkl'
+LOOP_TRAIN_PATH = '/content/hnc_data/data/loop/train_deduplicate.pkl'
+LOOP_FULL_PATH = '/content/hnc_data/data/loop/train.pkl' 
 LOOP_PARAM_PAD = 2
 LOOP_PARAM_SEQ = 2
 MAX_LOOP = 60 
