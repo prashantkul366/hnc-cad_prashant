@@ -15,7 +15,7 @@ SOLID_PARAM_SEQ = 6
 MAX_SOLID = 5 
 SOLID_CODEBOOK_DIM = 10000 # or optionally use 5000
 
-
+# 
 
 # PROFILE CONFIG
 PROFILE_TRAIN_PATH = '/content/hnc_data/data/profile/train_deduplicate.pkl' 
