@@ -7,6 +7,8 @@ REINIT_TRAIN_EPOCH = 200
 TOTAL_TRAIN_EPOCH = 250
 
 # SOLID CONFIG
+
+
 SOLID_TRAIN_PATH = '/content/hnc_data/data/solid/train_deduplicate.pkl'
 SOLID_FULL_PATH = '/content/hnc_data/data/solid/train.pkl'
 SOLID_PARAM_SEQ = 6
